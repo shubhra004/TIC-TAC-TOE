@@ -1,0 +1,176 @@
+/* ===== BACKGROUND ===== */
+body {
+    background: radial-gradient(circle at center, #001f3f, #000814);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    text-align: center;
+    width: 95%;
+    max-width: 420px;
+}
+
+/* ===== TITLE ===== */
+h1 {
+    color: #00f7ff;
+    text-shadow: 0 0 10px #00f7ff, 0 0 25px #00f7ff;
+}
+/* ===== STATUS TEXT BELOW BOARD ===== */
+#status {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #ffd900;   /* Change this color */
+    text-shadow: 
+        0 0 8px #9b2310,
+        0 0 15px #8a3919,
+        0 0 25px #d75610;
+}
+.hidden {
+    display: none;
+}
+
+/* ===== BOARD ===== */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin: 20px 0;
+}
+
+/* ===== CELLS ===== */
+.cell {
+    background: #000;
+    height: 110px;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 3px solid #00f7ff;
+    box-shadow: 0 0 10px #00f7ff, inset 0 0 10px #00f7ff;
+    transition: 0.3s;
+}
+
+.cell:hover {
+    transform: scale(1.07);
+}
+
+.cell.x {
+    color: #ff003c;
+    text-shadow: 0 0 10px #ff003c, 0 0 25px #ff003c;
+}
+
+.cell.o {
+    color: #00f7ff;
+    text-shadow: 0 0 10px #00f7ff, 0 0 25px #00f7ff;
+}
+
+/* ===== BUTTON ===== */
+.btn {
+    padding: 10px 15px;
+    margin: 6px;
+    border: 2px solid #00f7ff;
+    background: transparent;
+    color: #00f7ff;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: #00f7ff;
+    color: black;
+    box-shadow: 0 0 15px #00f7ff;
+}
+
+.btn:active {
+    transform: scale(0.85);
+}
+
+/* ============================= */
+/* ⚡ WIN LIGHTNING EFFECT */
+/* ============================= */
+
+.win-effect {
+    animation: lightningFlash 0.2s alternate 10;
+}
+
+@keyframes lightningFlash {
+    from {
+        box-shadow: 0 0 10px #00ff00, 0 0 30px #00ff00;
+        background: #002200;
+    }
+    to {
+        box-shadow: 0 0 30px #00ff00, 0 0 60px #00ff00;
+        background: #004400;
+    }
+}
+
+/* ============================= */
+/* 🟡 DRAW EFFECT */
+/* ============================= */
+
+.draw-effect {
+    animation: drawPulse 0.5s alternate 6;
+}
+
+@keyframes drawPulse {
+    from {
+        box-shadow: 0 0 10px #ffaa00;
+    }
+    to {
+        box-shadow: 0 0 30px #ffaa00;
+    }
+}
+
+/* ============================= */
+/* 🔴 LOSE EFFECT */
+/* ============================= */
+
+.lose-effect {
+    animation: loseRed 0.4s alternate 6;
+}
+
+@keyframes loseRed {
+    from {
+        background: #220000;
+        box-shadow: 0 0 10px #ff0000;
+    }
+    to {
+        background: #440000;
+        box-shadow: 0 0 30px #ff0000;
+    }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .cell {
+        height: 85px;
+        font-size: 2.3rem;
+    }
+}
+/* ============================= */
+/* 🔥 SINGLE WIN LINE */
+/* ============================= */
+
+.board {
+    position: relative;
+}
+
+.win-line {
+    position: absolute;
+    height: 5px;
+    background: #00ffd0;
+    box-shadow: 0 0 10px #00ff00, 0 0 25px #00ff00;
+    animation: drawLine 0.4s forwards;
+}
+
+@keyframes drawLine {
+    from { width: 0; }
+    to { }
+}
